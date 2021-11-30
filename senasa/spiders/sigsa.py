@@ -10,6 +10,13 @@ import csv
 import re
 
 
+user_cuit = "cuit"
+user_password = "password"
+out_file_name = 'datosss.csv'
+id_start = 54247
+id_finish = 54250
+
+
 class SigsaSpider(scrapy.Spider):
     name = 'sigsa'
     auth_data = {}
@@ -27,11 +34,11 @@ class SigsaSpider(scrapy.Spider):
     def parse(self, response):
         self.driver.get(self.start_urls[0])
         element = self.driver.find_element_by_id("F1:username")
-        element.send_keys("cuit")
+        element.send_keys(user_cuit)
         self.driver.find_element_by_id("F1:btnSiguiente").click()
         element = WebDriverWait(self.driver, 600).until(EC.element_to_be_clickable((By.ID, "F1:password")))
 
-        element.send_keys("password")
+        element.send_keys(user_password)
         WebDriverWait(self.driver, 600).until(EC.element_to_be_clickable((By.ID, "F1:btnIngresar"))).click()
 
         WebDriverWait(self.driver, 600).until(EC.element_to_be_clickable((By.XPATH, "//div[@title='senasa_sigsa']"))).click()
@@ -57,7 +64,7 @@ class SigsaSpider(scrapy.Spider):
 
         self.buscar()
 
-        with open('datosss.csv', 'a+', newline='') as file:
+        with open(out_file_name, 'a+', newline='') as file:
             writer = csv.writer(file)
             self.procesar_opciones(writer)
 
@@ -73,7 +80,7 @@ class SigsaSpider(scrapy.Spider):
         self.driver.find_element_by_xpath("//button[@ng-click='find()']").click()
 
     def procesar_opciones(self, writer):
-        for i in range(54247, 54250):
+        for i in range(id_start, id_finish):
             self.driver.get("https://aps2.senasa.gov.ar/venereas/app/index.html#/planillaLaboratorio/" + str(i))
 
             time.sleep(1)

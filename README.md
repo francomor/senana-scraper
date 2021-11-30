@@ -6,4 +6,9 @@
 * Selenium
 
 ###Ejecutar
+
+En la terminal de Anaconda ejecutar:
+
+``` python
 python -m scrapy crawl sigsa
+```

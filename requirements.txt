@@ -1,0 +1,2 @@
+selenium==3.141.0
+scrapy==2.5.1

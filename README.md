@@ -5,10 +5,12 @@
 * Scrapy
 * Selenium
 
-###Ejecutar
+### Ejecutar
 
 En la terminal de Anaconda ejecutar:
 
 ``` python
+pip install -r requirements.txt
+
 python -m scrapy crawl sigsa
 ```

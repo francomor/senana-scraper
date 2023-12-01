@@ -1,13 +1,11 @@
 # Sigsa scraper
 
-### Requiere
-* Anaconda3 (es un shell para python)
+### Requirements
+* Anaconda3
 * Scrapy
 * Selenium
 
-### Ejecutar
-
-En la terminal de Anaconda ejecutar:
+### How to run
 
 ``` python
 pip install -r requirements.txt
